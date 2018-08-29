@@ -228,9 +228,10 @@ def CapsNetR1(input_shape, n_class=2):
 
 def CapsNetBasic(input_shape, n_class=2):
     x = layers.Input(shape=input_shape)
+    s = Lambda(lambda x: x / 255) (x)
 
     # Layer 1: Just a conventional Conv2D layer
-    conv1 = layers.Conv2D(filters=256, kernel_size=5, strides=1, padding='same', activation='relu', name='conv1')(x)
+    conv1 = layers.Conv2D(filters=256, kernel_size=5, strides=1, padding='same', activation='relu', name='conv1')(s)
 
     # Reshape layer to be 1 capsule x [filters] atoms
     _, H, W, C = conv1.get_shape()
