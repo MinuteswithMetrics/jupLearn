@@ -226,7 +226,7 @@ def CapsNetR1(input_shape, n_class=2):
     return train_model, eval_model, manipulate_model
 
 
-def CapsNetBasic(input_shape, n_class=2):
+def CapsNetBasic(input_shape, n_class=1):
     x = layers.Input(shape=input_shape)
     s = Lambda(lambda x: x / 255) (x)
 
